@@ -2,11 +2,11 @@
 public class MainClass {
 
 	public static void main(String[] args) {
-		Baralho b = new Baralho();
-		b.imprimirTodasAsCartas();
+		Deck b = new Deck();
+		b.printAllCards();
 		
-		b.embaralhar();
-		b.imprimirTodasAsCartas();
+		b.shuffle();
+		b.printAllCards();
 		
 	}
 
