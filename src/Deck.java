@@ -28,5 +28,12 @@ public class Deck {
 		long seed = System.nanoTime();
 		Collections.shuffle(cards, new Random(seed));
 	}
+	
+	public Card get(int index){
+		Card c = cards.get(index);
+		cards.remove(index);
+		return c;
+		
+	}
 
 }
