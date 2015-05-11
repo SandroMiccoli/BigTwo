@@ -18,7 +18,6 @@ public class Carta {
 	
 	public void printCarta(){
 		System.out.println(this.valor+" de "+this.naipe);
-	
 	}
 	
 }

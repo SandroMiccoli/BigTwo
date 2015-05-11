@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 
 public class Baralho {
@@ -14,10 +16,17 @@ public class Baralho {
 		}
 	}
 	
-	public void printBaralho(){
+	public void imprimirTodasAsCartas(){
+		System.out.println("Imprimindo todas as cartas...");
 		for(Carta c : cartas){
 			c.printCarta();
 		}
+	}
+	
+	public void embaralhar(){
+		System.out.println("Embaralhando o baralho...");
+		long seed = System.nanoTime();
+		Collections.shuffle(cartas, new Random(seed));
 	}
 
 }
