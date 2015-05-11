@@ -1,7 +1,24 @@
 
 public class Carta {
 
-	private int valor; // Valor vai sao 3, 4, 5, ..., 10, J, Q, K, A e 2.
-	private int naipe; // Naipes vao sao ouros, paus, copas, espadas.
+	public static enum tipoNaipe{
+		OUROS,
+		PAUS,
+		COPAS,
+		ESPADAS
+	};
+	
+	private int valor; // Valor da carta. De 1 até 13, sendo 1=A, 11=J, 12=Q e 13=K.
+	private tipoNaipe naipe;
+	
+	public Carta(int v, tipoNaipe n){
+		this.valor = v;
+		this.naipe = n;
+	}
+	
+	public void printCarta(){
+		System.out.println(this.valor+" de "+this.naipe);
+	
+	}
 	
 }
