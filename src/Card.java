@@ -7,7 +7,7 @@ public class Card {
 	
 	public static enum rankType{
 		ACE,
-		ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN,
+		TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN,
 		JACK, QUEEN, KING	
 	}
 	
@@ -21,6 +21,14 @@ public class Card {
 	
 	public void printCard(){
 		System.out.println(this.rank+" of "+this.suit);
+	}
+	
+	public rankType getRank(){
+		return this.rank;
+	}
+	
+	public suitType getSuit(){
+		return this.suit;
 	}
 	
 }

@@ -5,13 +5,17 @@ public class BigTwo {
 
 		private Deck deck;
 		private ArrayList<Player> players;
+		private Player currentPlayer;
 		
 		public BigTwo(){
 			deck = new Deck();
 			players = new ArrayList<Player>();
 		}
 		
-		// Starts game
+		// Starts game:
+		// Shuffles deck
+		// Creates players
+		// Distribute cards among players
 		public void startGame(){
 			System.out.println("Starting game...");
 			this.shuffleDeck();
@@ -37,12 +41,26 @@ public class BigTwo {
 			System.out.println("Distributing cards...");
 			for (Player p : players){
 			    for (int i=0; i<13; i++){
-			    	p.getCard(deck.get(0)); // Gets top card of the deck
+			    	Card c = deck.get(0);
+			    	
+			    	if (checkIfStartPlayer(c))
+			    		currentPlayer = p;
+			    		
+			    	p.getCard(c); // Gets top card of the deck
 			    }
 			}
 		}
 		
-		public void printAllPlayersCards(){
+		public boolean checkIfStartPlayer(Card c){
+			return c.getSuit()==Card.suitType.DIAMOND && c.getRank()==Card.rankType.THREE;
+		}
+		
+		public Player getPlayer(int i){
+			return players.get(i);
+		}
+		
+		// Print 
+		public void printAllPlayersHands(){
 			for (int i=0; i<players.size(); i++){
 				System.out.println("Player "+(i+1));
 				players.get(i).printHand();
