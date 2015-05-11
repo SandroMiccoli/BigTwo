@@ -10,7 +10,7 @@ public class Baralho {
 	public Baralho(){
 		cartas = new ArrayList<Carta>();
 		for (Carta.tipoNaipe n : Carta.tipoNaipe.values()){
-			for (int v=1; v<=13; v++){
+			for (Carta.tipoValor v : Carta.tipoValor.values()){
 				cartas.add(new Carta(v,n));
 			}
 		}
