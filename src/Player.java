@@ -6,14 +6,20 @@ import java.util.Comparator;
 public class Player {
 
 	private ArrayList<Card> hand;
+	private String name;
 	
-	public Player(){
+	public Player(String n){
+		this.name = n;
 		hand = new ArrayList<Card>();
 	}
 	
 	public void getCard(Card c){
 		if (hand.size() < 13)
 			hand.add(c);
+	}
+	
+	public String getName(){
+		return name;
 	}
 	
 	public void removeCard(Card c){

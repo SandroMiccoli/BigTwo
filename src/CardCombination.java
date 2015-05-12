@@ -2,15 +2,20 @@ import java.util.ArrayList;
 
 
 public class CardCombination {
-	
-	private ArrayList<Card> combination;
-	
+
 	public static enum combinationType{
 		SINGLE,
 		PAIR,
 		TRIPLE,
-		FIVECARD
+		STRAIGHT,
+		FLUSH,
+		FULLHOUSE,
+		FOUR,
+		STRAIGHTFLUSH
 	}
+	
+	private ArrayList<Card> combination;
+	private combinationType type;
 
 	public CardCombination(ArrayList<Card> c){
 		combination = c;
@@ -30,6 +35,7 @@ public class CardCombination {
 		
 		
 		if (combination.size()==1){
+			this.type = combinationType.SINGLE;
 			return true;
 		}
 		else if (combination.size()==2){
@@ -46,16 +52,20 @@ public class CardCombination {
 	}
 	
 	private boolean checkTwoCards(){
-		if (combination.get(0).getRank()==combination.get(1).getRank())
+		if (combination.get(0).getRank() == combination.get(1).getRank()){
+			this.type = combinationType.PAIR;
 			return true;
+		}
 		else
 			return false;
 	}
 	
 	private boolean checkThreeCards(){
-		if (combination.get(0).getRank()==combination.get(1).getRank() &&
-			combination.get(1).getRank()==combination.get(2).getRank())
+		if (combination.get(0).getRank() == combination.get(1).getRank() &&
+			combination.get(1).getRank() == combination.get(2).getRank()){
+			this.type = combinationType.TRIPLE;
 			return true;
+		}
 		else
 			return false;
 	}

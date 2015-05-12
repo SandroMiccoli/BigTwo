@@ -9,6 +9,7 @@ public class Deck {
 	
 	public Deck(){
 		cards = new ArrayList<Card>();
+		
 		for (Card.suitType s : Card.suitType.values()){
 			for (Card.rankType r : Card.rankType.values()){
 				cards.add(new Card(r,s));

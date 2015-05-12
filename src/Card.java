@@ -2,7 +2,7 @@
 public class Card {
 
 	public static enum suitType{
-		DIAMOND, CLUBS, HEARTS, SPADES
+		DIAMONDS, CLUBS, HEARTS, SPADES
 	};
 	
 	public static enum rankType{
