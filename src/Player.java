@@ -7,6 +7,7 @@ public class Player {
 
 	private ArrayList<Card> hand;
 	private String name;
+	private PlayerState state;
 	
 	public Player(String n){
 		this.name = n;
@@ -58,4 +59,17 @@ public class Player {
 		
 		return new ArrayList<Card>(hand.subList(fromIndex, toIndex));
 	}
+
+	public void setState(PlayerState state){
+		this.state = state;
+	}
+	
+	public PlayerState getState(){
+		return this.state;
+	}
+	
+	public void request(){
+		this.state.doAction(this);
+	}
+	
 }

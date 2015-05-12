@@ -9,6 +9,8 @@ public class BigTwo {
 		private CardCombination currentCombination;
 		private GameState state;
 		
+		private int gameRound=0;
+		
 		public int lowestHand=13;
 		
 		public BigTwo(){
