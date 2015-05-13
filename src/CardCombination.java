@@ -95,4 +95,17 @@ public class CardCombination {
 		
 		//return false;
 	}
+	
+	private boolean checkThreeOfDiamonds(){
+		for (Card c : combination){
+			if(c.getRank()==Card.rankType.THREE && c.getSuit()==Card.suitType.DIAMONDS)
+				return true;
+		}
+		return false;
+		
+	}
+	
+	public boolean checkFirsCombination(){
+		return checkCombination() && checkThreeOfDiamonds();
+	}
 }

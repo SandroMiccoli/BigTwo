@@ -21,12 +21,7 @@ public class CreateCombination implements GameState {
 			setSizeOfCombination();
 			createCombination();
 			combination.print();
-			if (!combination.checkCombination()){
-				System.out.println("Combination not possible, please try again.");
-				clearVariables();
-			}
-			else
-				playCombination = confirmCombination();
+			checkCombination(game);
 		}
 		
 	}
@@ -93,6 +88,25 @@ public class CreateCombination implements GameState {
 		}
 		
 		return submit;
+	}
+	
+	public void checkCombination(BigTwo game){
+		if (game.getGameRound()==0){
+			if (!combination.checkFirsCombination()){
+				System.out.println("Combination not valid, please try again.");
+				clearVariables();
+			}
+			else
+				playCombination = confirmCombination();
+		}
+		else {
+			if (!combination.checkCombination()){
+				System.out.println("Combination not valid, please try again.");
+				clearVariables();
+			}
+			else
+				playCombination = confirmCombination();
+		}
 	}
 	
 	public boolean isValidSize(){
