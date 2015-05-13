@@ -11,27 +11,44 @@ public class CardCombination {
 		FLUSH,
 		FULLHOUSE,
 		FOUR,
-		STRAIGHTFLUSH
+		STRAIGHTFLUSH,
+		NOTVALID
 	}
 	
 	private ArrayList<Card> combination;
-	private combinationType type;
+	
+	private combinationType type = combinationType.NOTVALID;;
 
 	public CardCombination(ArrayList<Card> c){
 		combination = c;
+		checkCombination();
+	}
+	
+	public void print(){
+		System.out.println(type.toString());
+		for (Card c : combination){
+			c.printCard();
+		}
+	}
+	
+	public void clear(){
+		combination.clear();
+		type=null;
 	}
 	
 	public boolean checkCombination(){
 
 		ArrayList<Card.rankType> ranks = new ArrayList<Card.rankType>();
 		ArrayList<Card.suitType> suits = new ArrayList<Card.suitType>();
+		
 		for (Card c : combination){
 			ranks.add(c.getRank());
 			suits.add(c.getSuit());
 		}
-		System.out.println("Ranks and suits...");
-		System.out.println(ranks);
-		System.out.println(suits);
+		
+		//System.out.println("Ranks and suits...");
+		//System.out.println(ranks);
+		//System.out.println(suits);
 		
 		
 		if (combination.size()==1){
@@ -47,8 +64,10 @@ public class CardCombination {
 		else if(combination.size()==5){
 			return checkFiveCards(); 
 		}
-		else
+		else{
+			this.type = combinationType.NOTVALID;
 			return false;
+		}
 	}
 	
 	private boolean checkTwoCards(){

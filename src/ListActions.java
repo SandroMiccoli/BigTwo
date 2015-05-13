@@ -18,9 +18,9 @@ public class ListActions implements GameState {
 	
 	public int waitingForInput(){
 		Scanner scanner = new Scanner(System.in);
-		int input=0;
+		int input=-1;
 		
-		while(input==0){
+		while(input==-1){
 			System.out.println("Selection your action...");
 			input = scanner.nextInt();
 		}

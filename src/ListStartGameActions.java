@@ -26,7 +26,7 @@ public class ListStartGameActions extends ListActions{
 				return new CreateCombination();
 			default:
 				System.out.println("Invalid option...");
-				return new ListActions();
+				return new ListStartGameActions();
 		}
 		
 	}

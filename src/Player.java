@@ -59,6 +59,10 @@ public class Player {
 		
 		return new ArrayList<Card>(hand.subList(fromIndex, toIndex));
 	}
+	
+	public ArrayList<Card> getHand(){
+		return this.hand;
+	}
 
 	public void setState(PlayerState state){
 		this.state = state;
