@@ -103,7 +103,7 @@ public class CreateCombination implements GameState {
 	}
 	
 	public void checkCombination(BigTwo game){
-		if (game.getGameRound()==0){
+		if (game.isFirstRound()){
 			if (!combination.checkFirsCombination()){
 				System.out.println("Combination not valid, please try again.");
 				clearVariables();

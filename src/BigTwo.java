@@ -10,9 +10,10 @@ public class BigTwo {
 		private CardCombination currentCombination;
 		private GameState state;
 		
-		private int gameRound=0;
+		private boolean firstRound=true;
+		private int gameTurn=0;
 		
-		public int lowestHand=13;
+		private int lowestHand=13;
 		
 		public BigTwo(){
 			deck = new Deck();
@@ -119,19 +120,23 @@ public class BigTwo {
 				return false;
 		}
 
-		public int getGameRound() {
-			return gameRound;
-		}
-
-		public void setGameRound(int gameRound) {
-			this.gameRound = gameRound;
+		public boolean isFirstRound(){
+			return this.firstRound;
 		}
 		
-		public boolean isFirstRound(){
-			return this.gameRound==0;
+		public void setGameStarted(){
+			this.firstRound = false;
 		}
 		
 		public void setCurrentCombination(CardCombination c){
 			currentCombination = c;
+		}
+
+		public int getGameTurn() {
+			return gameTurn;
+		}
+
+		public void setGameTurn(int gameTurn) {
+			this.gameTurn = gameTurn;
 		}
 }
