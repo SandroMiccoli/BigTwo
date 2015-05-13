@@ -98,4 +98,16 @@ public class BigTwo {
 			else
 				return false;
 		}
+
+		public int getGameRound() {
+			return gameRound;
+		}
+
+		public void setGameRound(int gameRound) {
+			this.gameRound = gameRound;
+		}
+		
+		public boolean isFirstRound(){
+			return this.gameRound==0;
+		}
 }
