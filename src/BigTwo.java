@@ -70,6 +70,28 @@ public class BigTwo {
 			return this.currentPlayer;
 		}
 		
+		public void setCurrentPlayer (Player p){
+			this.currentPlayer = p;
+		}
+		
+		public void setNextPlayer(){
+			for (int i=0; i < players.size(); i++){
+				if (players.get(i)==this.currentPlayer){
+					System.out.println("Players!");
+					System.out.println(players.get(i).getName());
+					System.out.println(this.currentPlayer.getName());
+					if (i == players.size()-1){
+						setCurrentPlayer(players.get(0));
+						break;
+					}
+					else{
+						setCurrentPlayer(players.get(i+1));
+						break;
+					}
+				}
+			}
+		}
+		
 		// Print 
 		public void printAllPlayersHands(){
 			for (int i=0; i<players.size(); i++){
@@ -109,5 +131,9 @@ public class BigTwo {
 		
 		public boolean isFirstRound(){
 			return this.gameRound==0;
+		}
+		
+		public void setCurrentCombination(CardCombination c){
+			currentCombination = c;
 		}
 }
