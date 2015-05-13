@@ -24,6 +24,16 @@ public class CreateCombination implements GameState {
 			checkCombination(game);
 		}
 		
+		if (playCombination){
+			// Remove cards from player's hand
+			removeCombinationFromHand(game);
+			game.getCurrentPlayer().printHand();
+			// Update current combination
+			game.setCurrentCombination(combination);
+			// Update current player -> state NextPlayer
+			game.setState(new NextPlayer());
+		}
+		
 	}
 	
 	public void listHand(BigTwo game){
@@ -109,7 +119,13 @@ public class CreateCombination implements GameState {
 		}
 	}
 	
-	public boolean isValidSize(){
+	public void removeCombinationFromHand(BigTwo game){
+		for (Card c : combination.getCards()){
+			game.getCurrentPlayer().removeCard(c);
+		}
+	}
+	
+	private boolean isValidSize(){
 		return (sizeOfComb==1 || sizeOfComb==2 || sizeOfComb==3 || sizeOfComb==5);
 	}
 	
