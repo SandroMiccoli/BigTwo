@@ -6,6 +6,7 @@ public class BigTwo {
 		private Deck deck;
 		private ArrayList<Player> players;
 		private Player currentPlayer;
+		private Player ownerOfLastCombination;
 		private CardCombination currentCombination;
 		private GameState state;
 		
@@ -77,9 +78,6 @@ public class BigTwo {
 		public void setNextPlayer(){
 			for (int i=0; i < players.size(); i++){
 				if (players.get(i)==this.currentPlayer){
-					System.out.println("Players!");
-					System.out.println(players.get(i).getName());
-					System.out.println(this.currentPlayer.getName());
 					if (i == players.size()-1){
 						setCurrentPlayer(players.get(0));
 						break;

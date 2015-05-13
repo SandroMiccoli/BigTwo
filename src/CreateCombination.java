@@ -25,11 +25,13 @@ public class CreateCombination implements GameState {
 		}
 		
 		if (playCombination){
+			// Checks if play is valid.
+			
 			// Remove cards from player's hand
 			removeCombinationFromHand(game);
 			game.getCurrentPlayer().printHand();
 			// Update current combination
-			game.setCurrentCombination(combination);
+			game.setCurrentCombination(combination);			
 			// Update current player -> state NextPlayer
 			game.setState(new NextPlayer());
 		}

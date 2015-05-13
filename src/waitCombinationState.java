@@ -8,7 +8,7 @@ public class waitCombinationState implements GameState {
 		System.out.println("Waiting for "+game.getCurrentPlayer().getName()+"'s action...");
 		
 		if (game.isFirstRound()){
-			game.setState(new ListStartGameActions());
+			game.setState(new ListStartRoundActions());
 			game.request();
 		}
 		else {

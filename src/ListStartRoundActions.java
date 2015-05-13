@@ -1,5 +1,5 @@
 
-public class ListStartGameActions extends ListActions{
+public class ListStartRoundActions extends ListActions{
 	
 	@Override
 	public void listActions(){
@@ -16,17 +16,17 @@ public class ListStartGameActions extends ListActions{
 				System.out.println("Sorting hand by suit...");
 				game.getCurrentPlayer().sortHandBySuit();
 				game.getCurrentPlayer().printHand();
-				return new ListStartGameActions();
+				return new ListStartRoundActions();
 			case 2:
 				System.out.println("Sorting hand by rank...");
 				game.getCurrentPlayer().sortHandByRank();
 				game.getCurrentPlayer().printHand();
-				return new ListStartGameActions();
+				return new ListStartRoundActions();
 			case 3:
 				return new CreateCombination();
 			default:
 				System.out.println("Invalid option...");
-				return new ListStartGameActions();
+				return new ListStartRoundActions();
 		}
 		
 	}
