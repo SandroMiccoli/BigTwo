@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class CardCombination {
@@ -36,21 +38,7 @@ public class CardCombination {
 		type=null;
 	}
 	
-	public boolean checkCombination(){
-
-		ArrayList<Card.rankType> ranks = new ArrayList<Card.rankType>();
-		ArrayList<Card.suitType> suits = new ArrayList<Card.suitType>();
-		
-		for (Card c : combination){
-			ranks.add(c.getRank());
-			suits.add(c.getSuit());
-		}
-		
-		//System.out.println("Ranks and suits...");
-		//System.out.println(ranks);
-		//System.out.println(suits);
-		
-		
+	public boolean checkCombination(){		
 		if (combination.size()==1){
 			this.type = combinationType.SINGLE;
 			return true;
@@ -90,10 +78,110 @@ public class CardCombination {
 	}
 	
 	private boolean checkFiveCards(){
-		// todo
-		return true;
+
+		if (checkStraight()){
+			this.type = combinationType.STRAIGHT;
+			return true;
+		}
+		else if (checkFlush()){
+			this.type = combinationType.FLUSH;
+			return true;
+		}
+		else if (checkFullHouse()){
+			this.type = combinationType.FULLHOUSE;
+			return true;
+		}
+		else if (checkFour()){
+			this.type = combinationType.FOUR;
+			return true;
+		}
+		else if (checkStraight() && checkFlush()){
+			this.type = combinationType.STRAIGHTFLUSH;
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	private boolean checkStraight(){
+		sortByRank();
+		boolean isStraight=false;
+		ArrayList<Card.rankType> ranks = new ArrayList<Card.rankType>();
 		
-		//return false;
+		for (Card c : combination){
+			ranks.add(c.getRank());
+		}
+		
+		for (int i = 0; i<ranks.size()-1; i++){
+			if(ranks.get(i).ordinal() == ranks.get(i+1).ordinal()-1)
+				isStraight = true;
+			else
+				isStraight = false;
+		}
+		
+		
+		return isStraight;
+	}
+	
+	private boolean checkFlush(){
+		
+		ArrayList<Card.suitType> suits = new ArrayList<Card.suitType>();
+
+		for (Card c : combination){
+			suits.add(c.getSuit());
+		}
+		
+		int freq = Collections.frequency(suits, suits.get(0));
+		
+		if (freq==5)
+			return true;
+		else
+			return false;
+	}
+	
+	private boolean checkFullHouse(){
+
+		sortByRank();
+		
+		boolean isFull=false;
+		
+		ArrayList<Card.rankType> ranks = new ArrayList<Card.rankType>();
+		
+		for (Card c : combination){
+			ranks.add(c.getRank());
+		}
+
+		int freqFirst = Collections.frequency(ranks, ranks.get(0));
+		int freqLast = Collections.frequency(ranks, ranks.get(4));
+		
+		if ( (freqFirst==3 && freqLast==2) || (freqFirst==2 && freqLast==3) )
+			isFull = true;
+		else
+			isFull = false;	
+		
+		return isFull;
+	}
+	
+	private boolean checkFour(){
+		sortByRank();
+		
+		boolean isFour=false;
+		
+		ArrayList<Card.rankType> ranks = new ArrayList<Card.rankType>();
+		
+		for (Card c : combination){
+			ranks.add(c.getRank());
+		}
+
+		int freqFirst = Collections.frequency(ranks, ranks.get(0));
+		int freqLast = Collections.frequency(ranks, ranks.get(4));
+		
+		if ( (freqFirst==4 && freqLast==1) || (freqFirst==1 && freqLast==4) )
+			isFour = true;
+		else
+			isFour = false;	
+		
+		return isFour;
 	}
 	
 	private boolean checkThreeOfDiamonds(){
@@ -103,9 +191,23 @@ public class CardCombination {
 		}
 		return false;
 		
-	}
+	}	
+	
 	
 	public boolean checkFirsCombination(){
 		return checkCombination() && checkThreeOfDiamonds();
+	}
+	
+	public ArrayList<Card> getCards(){
+		return combination;
+	}
+	
+	private void sortByRank(){
+		Collections.sort(combination, new Comparator<Card>() {
+	        @Override
+			public int compare(Card c1, Card c2){
+	            return  c1.getRank().compareTo(c2.getRank());
+	        }
+	    });
 	}
 }
