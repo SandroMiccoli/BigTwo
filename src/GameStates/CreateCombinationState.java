@@ -73,7 +73,7 @@ public class CreateCombinationState implements GameState {
 		game.setState(new NextPlayerState());
 		// Sets first round if this player 
 		if(game.getCurrentPlayer()==game.getOwnerOfLastCombination()){
-			game.isFirstRound(true);	
+			game.resetRound();	
 		}
 		else
 		{

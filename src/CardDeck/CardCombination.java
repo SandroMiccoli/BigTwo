@@ -258,12 +258,18 @@ public class CardCombination {
 
 	// Compare instance with another card.
 	// Returns:
-	// -1 if this is lower then that OR
-	// 1 if this is higher then that
+	// false if this is lower then that OR
+	// true if this is higher then that
 	public boolean isHigherThan(CardCombination that){
+		if (this.type.ordinal() < that.type.ordinal())
+			return false;
+		else if (this.type.ordinal() > that.type.ordinal())
+			return true;
+		else{
 		// SINGLE, PAIR, TRIPLE, STRAIGHT, FLUSH, STRAIGHT FLUSH
 		return this.getHighestCard().compare(that.getHighestCard());
 		// FOUR and FULLHOUSE // Just set the highest card
+		}
 
 	}
 }

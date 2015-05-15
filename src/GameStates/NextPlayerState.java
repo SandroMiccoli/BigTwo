@@ -9,7 +9,7 @@ public class NextPlayerState implements GameState {
 		game.setGameTurn(game.getGameTurn()+1);
 		game.setNextPlayer();
 		if (game.getCurrentPlayer()==game.getOwnerOfLastCombination())
-			game.isFirstRound(true);
+			game.resetRound();
 		game.setState(new waitCombinationState());
 	}
 

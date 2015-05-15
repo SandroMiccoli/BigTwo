@@ -25,6 +25,10 @@ public class ListActionsState implements GameState {
 		
 		while(input==-1){
 			System.out.println("Selection your action...");
+			while (!scanner.hasNextInt()) {
+				   System.out.println("Only numbers, please.");
+				   scanner.nextLine();
+				}
 			input = scanner.nextInt();
 		}
 		

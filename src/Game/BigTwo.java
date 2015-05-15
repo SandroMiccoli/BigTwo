@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import CardDeck.Card;
 import CardDeck.CardCombination;
 import CardDeck.Deck;
+import GameStates.EndOfGameState;
 import GameStates.GameState;
 import GameStates.StartState;
 
@@ -168,5 +169,18 @@ public class BigTwo {
 
 		public void setGameTurn(int gameTurn) {
 			this.gameTurn = gameTurn;
+		}
+		
+		public void resetRound(){
+			this.isFirstRound(true);
+			this.currentCombination=null;
+			this.ownerOfLastCombination=null;
+		}
+		
+		public void updateLowestHand(Player p){
+			this.lowestHand = p.getHand().size();
+			if (this.lowestHand==0){
+				this.setState(new EndOfGameState());
+			}
 		}
 }
