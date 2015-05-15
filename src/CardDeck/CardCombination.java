@@ -31,6 +31,7 @@ public class CardCombination {
 	}
 	
 	public void getHighestCard(){
+		sortBySuit();
 		sortByRank();
 		highestCard = combination.get(combination.size()-1);
 		System.out.println("Highest Card!:");
@@ -218,6 +219,15 @@ public class CardCombination {
 	        @Override
 			public int compare(Card c1, Card c2){
 	            return  c1.getRank().compareTo(c2.getRank());
+	        }
+	    });
+	}
+
+	public void sortBySuit(){
+		Collections.sort(combination, new Comparator<Card>() {
+	        @Override
+			public int compare(Card c1, Card c2){
+	            return  c1.getSuit().compareTo(c2.getSuit());
 	        }
 	    });
 	}

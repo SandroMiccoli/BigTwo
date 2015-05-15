@@ -3,7 +3,7 @@ package CardDeck;
 public class Card {
 
 	public static enum suitType{
-		DIAMONDS, CLUBS, HEARTS, SPADES
+		DIAMONDS, HEARTS, SPADES, CLUBS
 	};
 	
 	public static enum rankType{
