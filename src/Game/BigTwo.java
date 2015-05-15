@@ -131,6 +131,10 @@ public class BigTwo {
 			return this.firstRound;
 		}
 		
+		public void isFirstRound(boolean b){
+			this.firstRound = b;
+		}
+		
 		public void setGameStarted(){
 			this.firstRound = false;
 		}

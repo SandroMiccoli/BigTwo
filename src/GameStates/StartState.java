@@ -9,9 +9,4 @@ public class StartState implements GameState {
 
 		game.setState(new waitCombinationState());	
 	}
-	
-	public String toString(){
-		return "Start State";
-	}
-
 }
