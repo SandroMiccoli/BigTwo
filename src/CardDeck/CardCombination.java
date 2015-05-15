@@ -1,3 +1,4 @@
+package CardDeck;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,11 +20,21 @@ public class CardCombination {
 	
 	private ArrayList<Card> combination;
 	
-	private combinationType type = combinationType.NOTVALID;;
+	private combinationType type = combinationType.NOTVALID;
+	
+	private Card highestCard;
 
 	public CardCombination(ArrayList<Card> c){
 		combination = c;
+		getHighestCard();
 		checkCombination();
+	}
+	
+	public void getHighestCard(){
+		sortByRank();
+		highestCard = combination.get(combination.size()-1);
+		System.out.println("Highest Card!:");
+		highestCard.printCard();
 	}
 	
 	public void print(){

@@ -1,8 +1,13 @@
+package GameStates;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import CardDeck.Card;
+import CardDeck.CardCombination;
+import Game.BigTwo;
 
-public class CreateCombination implements GameState {
+
+public class CreateCombinationState implements GameState {
 	
 	private ArrayList<Card> hand;
 	private CardCombination combination;
@@ -33,7 +38,7 @@ public class CreateCombination implements GameState {
 			// Update current combination
 			game.setCurrentCombination(combination);			
 			// Update current player -> state NextPlayer
-			game.setState(new NextPlayer());
+			game.setState(new NextPlayerState());
 		}
 		
 	}

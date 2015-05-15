@@ -1,5 +1,7 @@
+package GameStates;
+import Game.BigTwo;
 
-public class NextPlayer implements GameState {
+public class NextPlayerState implements GameState {
 
 	@Override
 	public void doAction(BigTwo game) {

@@ -1,5 +1,12 @@
+package Game;
+
 import java.util.ArrayList;
 
+import CardDeck.Card;
+import CardDeck.CardCombination;
+import CardDeck.Deck;
+import GameStates.GameState;
+import GameStates.StartState;
 
 public class BigTwo {
 

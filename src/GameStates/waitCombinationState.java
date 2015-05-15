@@ -1,3 +1,5 @@
+package GameStates;
+import Game.BigTwo;
 
 public class waitCombinationState implements GameState {
 
@@ -8,12 +10,12 @@ public class waitCombinationState implements GameState {
 		System.out.println("Waiting for "+game.getCurrentPlayer().getName()+"'s action...");
 		
 		if (game.isFirstRound()){
-			game.setState(new ListStartRoundActions());
+			game.setState(new ListStartRoundActionsState());
 			game.request();
 		}
 		else {
-			game.setState(new NextPlayer());
-			game.setState(new ListActions());
+			game.setState(new NextPlayerState());
+			game.setState(new ListActionsState());
 			game.request();
 		}
 		

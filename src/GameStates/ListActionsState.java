@@ -1,7 +1,10 @@
+package GameStates;
 import java.util.Scanner;
 
+import Game.BigTwo;
 
-public class ListActions implements GameState {
+
+public class ListActionsState implements GameState {
 	
 	@Override
 	public void doAction(BigTwo game) {
@@ -39,22 +42,22 @@ public class ListActions implements GameState {
 
 		switch(action){
 			case 1:
-				return new NextPlayer();
+				return new NextPlayerState();
 			case 2:
 				System.out.println("Sorting hand by suit...");
 				game.getCurrentPlayer().sortHandBySuit();
 				game.getCurrentPlayer().printHand();
-				return new ListActions();
+				return new ListActionsState();
 			case 3:
 				System.out.println("Sorting hand by rank...");
 				game.getCurrentPlayer().sortHandByRank();
 				game.getCurrentPlayer().printHand();
-				return new ListActions();
+				return new ListActionsState();
 			case 4:
-				return new CreateCombination();
+				return new CreateCombinationState();
 			default:
 				System.out.println("Invalid option...");
-				return new ListActions();
+				return new ListActionsState();
 		}
 		
 	}

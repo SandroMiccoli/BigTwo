@@ -1,5 +1,9 @@
+package GameStates;
+import Game.BigTwo;
 
-public class ListStartRoundActions extends ListActions{
+
+
+public class ListStartRoundActionsState extends ListActionsState{
 	
 	@Override
 	public void listActions(){
@@ -16,17 +20,17 @@ public class ListStartRoundActions extends ListActions{
 				System.out.println("Sorting hand by suit...");
 				game.getCurrentPlayer().sortHandBySuit();
 				game.getCurrentPlayer().printHand();
-				return new ListStartRoundActions();
+				return new ListStartRoundActionsState();
 			case 2:
 				System.out.println("Sorting hand by rank...");
 				game.getCurrentPlayer().sortHandByRank();
 				game.getCurrentPlayer().printHand();
-				return new ListStartRoundActions();
+				return new ListStartRoundActionsState();
 			case 3:
-				return new CreateCombination();
+				return new CreateCombinationState();
 			default:
 				System.out.println("Invalid option...");
-				return new ListStartRoundActions();
+				return new ListStartRoundActionsState();
 		}
 		
 	}

@@ -1,3 +1,5 @@
+package GameStates;
+import Game.BigTwo;
 
 public class StartState implements GameState {
 

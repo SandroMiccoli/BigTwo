@@ -1,7 +1,9 @@
+package Game;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import CardDeck.Card;
 
 public class Player {
 

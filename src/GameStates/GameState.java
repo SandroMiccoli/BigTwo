@@ -1,3 +1,5 @@
+package GameStates;
+import Game.BigTwo;
 
 public interface GameState {
 	
