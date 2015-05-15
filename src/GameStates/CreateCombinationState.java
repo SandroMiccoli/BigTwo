@@ -37,7 +37,7 @@ public class CreateCombinationState implements GameState {
 		}
 		
 		if (playCombination){
-			if (game.getGameTurn()!=0){
+			if (game.getGameTurn()!=0 && game.getCurrentCombination()!=null){
 				if(combination.isHigherThan(game.getCurrentCombination())){
 					playCombination(game);
 				}
@@ -141,7 +141,7 @@ public class CreateCombinationState implements GameState {
 	}
 	
 	public void checkCombination(BigTwo game){
-		if (game.isFirstRound()){
+		if (game.isFirstRound()&&game.getGameTurn()==0){
 			if (!combination.checkFirsCombination()){
 				System.out.println("Combination not valid, please try again.");
 				clearVariables();
