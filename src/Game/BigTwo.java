@@ -14,7 +14,7 @@ public class BigTwo {
 		private ArrayList<Player> players;
 		private Player currentPlayer;
 		private Player ownerOfLastCombination;
-		private CardCombination currentCombination;
+		private CardCombination currentCombination = null;
 		private GameState state;
 		
 		private boolean firstRound=true;
@@ -75,6 +75,14 @@ public class BigTwo {
 			return players.get(i);
 		}
 		
+		public Player getOwnerOfLastCombination(){
+			return this.ownerOfLastCombination;
+		}
+		
+		public void setOwnerOfLastCombination(Player p){
+			this.ownerOfLastCombination=p;
+		}
+		
 		public Player getCurrentPlayer(){
 			return this.currentPlayer;
 		}
@@ -104,6 +112,17 @@ public class BigTwo {
 				System.out.println(players.get(i).getName());
 				players.get(i).printHand();
 			}
+		}
+		
+		public CardCombination getCurrentCombination(){
+			return currentCombination;
+		}
+		
+		public void printCurrentCombination(){
+			System.out.println("Current game on the table is a " + currentCombination.getType() 
+							 + " with a/an "+currentCombination.getHighestCard().getRank() 
+							 + " of " + currentCombination.getHighestCard().getSuit()
+							 + " as the highest card.");
 		}
 		
 		public void setState(GameState state){

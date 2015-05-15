@@ -12,7 +12,6 @@ public class waitCombinationState implements GameState {
 		if (game.isFirstRound()){
 			game.setState(new ListStartRoundActionsState());
 			game.request();
-			game.isFirstRound(false);
 		}
 		else {
 			game.setState(new NextPlayerState());

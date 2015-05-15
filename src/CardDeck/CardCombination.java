@@ -15,7 +15,24 @@ public class CardCombination {
 		FULLHOUSE,
 		FOUR,
 		STRAIGHTFLUSH,
-		NOTVALID
+		NOTVALID;
+		
+		@Override
+		  public String toString() {
+		    switch(this) {
+		      case SINGLE: return "Single";
+		      case PAIR: return "Pair";
+		      case TRIPLE: return "Triple";
+		      case STRAIGHT: return "Straight";
+		      case FLUSH: return "Flush";
+		      case FULLHOUSE: return "Full House";
+		      case FOUR: return "Four";
+		      case STRAIGHTFLUSH: return "Straight Flush";
+		      case NOTVALID: return "Not valid";
+		      
+		      default: throw new IllegalArgumentException();
+		    }
+		  }
 	}
 	
 	private ArrayList<Card> combination;
@@ -26,16 +43,22 @@ public class CardCombination {
 
 	public CardCombination(ArrayList<Card> c){
 		combination = c;
-		getHighestCard();
+		setHighestCard();
 		checkCombination();
 	}
 	
-	public void getHighestCard(){
+	public void setHighestCard(){
 		sortBySuit();
 		sortByRank();
 		highestCard = combination.get(combination.size()-1);
-		System.out.println("Highest Card!:");
-		highestCard.printCard();
+	}
+	
+	public Card getHighestCard(){
+		return highestCard;
+	}
+	
+	public String getType(){
+		return type.toString();
 	}
 	
 	public void print(){
@@ -117,7 +140,7 @@ public class CardCombination {
 	
 	private boolean checkStraight(){
 		sortByRank();
-		boolean isStraight=false;
+		boolean isStraight=true;
 		ArrayList<Card.rankType> ranks = new ArrayList<Card.rankType>();
 		
 		for (Card c : combination){
@@ -127,8 +150,10 @@ public class CardCombination {
 		for (int i = 0; i<ranks.size()-1; i++){
 			if(ranks.get(i).ordinal() == ranks.get(i+1).ordinal()-1)
 				isStraight = true;
-			else
+			else{
 				isStraight = false;
+				break;
+			}
 		}
 		
 		
@@ -205,7 +230,6 @@ public class CardCombination {
 		
 	}	
 	
-	
 	public boolean checkFirsCombination(){
 		return checkCombination() && checkThreeOfDiamonds();
 	}
@@ -230,5 +254,16 @@ public class CardCombination {
 	            return  c1.getSuit().compareTo(c2.getSuit());
 	        }
 	    });
+	}
+
+	// Compare instance with another card.
+	// Returns:
+	// -1 if this is lower then that OR
+	// 1 if this is higher then that
+	public boolean isHigherThan(CardCombination that){
+		// SINGLE, PAIR, TRIPLE, STRAIGHT, FLUSH, STRAIGHT FLUSH
+		return this.getHighestCard().compare(that.getHighestCard());
+		// FOUR and FULLHOUSE // Just set the highest card
+
 	}
 }

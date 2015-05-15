@@ -23,22 +23,35 @@ public class CreateCombinationState implements GameState {
 		while(!playCombination){
 			System.out.println("Choices of cards...");
 			listHand(game);
-			setSizeOfCombination();
+			if (game.getCurrentCombination() != null){
+				sizeOfComb=game.getCurrentCombination().getCards().size();
+				game.printCurrentCombination();
+				System.out.println("You can only create a combination with "+sizeOfComb+" cards: ");
+			}
+			else{
+				setSizeOfCombination();
+			}
 			createCombination();
 			combination.print();
 			checkCombination(game);
 		}
 		
 		if (playCombination){
-			// Checks if play is valid.
+			if (game.getGameTurn()!=0){
+				if(combination.isHigherThan(game.getCurrentCombination())){
+					playCombination(game);
+				}
+				else{
+					System.out.println("Your game is inferior then the game on the table. Try again...");
+					playCombination=false;
+					game.setState(new ListActionsState());
+				}
+			}
+			else{
+				playCombination(game);
+			}
+
 			
-			// Remove cards from player's hand
-			removeCombinationFromHand(game);
-			game.getCurrentPlayer().printHand();
-			// Update current combination
-			game.setCurrentCombination(combination);			
-			// Update current player -> state NextPlayer
-			game.setState(new NextPlayerState());
 		}
 		
 	}
@@ -48,6 +61,26 @@ public class CreateCombinationState implements GameState {
 			System.out.print("[ "+(i+1)+" ] ");
 			hand.get(i).printCard();
 		}
+	}
+	
+	public void playCombination(BigTwo game){
+		// Remove cards from player's hand
+		removeCombinationFromHand(game);
+		game.getCurrentPlayer().printHand();
+		// Update current combination
+		game.setCurrentCombination(combination);			
+		// Update current player -> state NextPlayer
+		game.setState(new NextPlayerState());
+		// Sets first round if this player 
+		if(game.getCurrentPlayer()==game.getOwnerOfLastCombination()){
+			game.isFirstRound(true);	
+		}
+		else
+		{
+			game.isFirstRound(false);
+		}
+		// Sets player that made the play
+		game.setOwnerOfLastCombination(game.getCurrentPlayer());		
 	}
 	
 	public void createCombination(){
