@@ -183,4 +183,8 @@ public class BigTwo {
 				this.setState(new EndOfGameState());
 			}
 		}
+		
+		public int getLowestHand(){
+			return this.lowestHand;
+		}
 }

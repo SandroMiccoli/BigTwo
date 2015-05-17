@@ -84,6 +84,8 @@ public class CreateCombinationState implements GameState {
 		// Remove cards from player's hand
 		removeCombinationFromHand(game);
 		game.getCurrentPlayer().printHand();
+		if (game.getCurrentPlayer().getHand().size() < game.getLowestHand())
+			game.updateLowestHand(game.getCurrentPlayer());
 		// Update current combination
 		game.setCurrentCombination(combination);			
 		// Update current player -> state NextPlayer
