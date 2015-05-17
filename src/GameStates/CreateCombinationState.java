@@ -29,11 +29,28 @@ public class CreateCombinationState implements GameState {
 				System.out.println("You can only create a combination with "+sizeOfComb+" cards: ");
 			}
 			else{
-				setSizeOfCombination();
+				if(!setSizeOfCombination()){
+
+					if (game.isFirstRound())
+						game.setState(new ListStartRoundActionsState());
+					else
+						game.setState(new ListActionsState());
+					break;
+				}
 			}
-			createCombination();
-			combination.print();
-			checkCombination(game);
+
+			if(isValidSize()){
+				if(!createCombination()){
+
+					if (game.isFirstRound())
+						game.setState(new ListStartRoundActionsState());
+					else
+						game.setState(new ListActionsState());
+					break;
+				};
+				combination.print();
+				checkCombination(game);
+			}
 		}
 		
 		if (playCombination){
@@ -83,7 +100,7 @@ public class CreateCombinationState implements GameState {
 		game.setOwnerOfLastCombination(game.getCurrentPlayer());		
 	}
 	
-	public void createCombination(){
+	public boolean createCombination(){
 		Scanner dd = new Scanner(System.in);
 		int[] vars = new int[sizeOfComb];
 		int temp=0;
@@ -91,6 +108,11 @@ public class CreateCombinationState implements GameState {
 		
 		for(int i = 0; i < vars.length; i++) {
 		  System.out.println("Enter next card: ");
+		  while (!dd.hasNextInt()) {
+			   System.out.println("Only numbers, please.");
+			   dd.nextLine();
+			   return false;
+			}
 		  temp = dd.nextInt()-1;
 		  if (temp<0 || temp>hand.size()){
 			  System.out.println("Card not available, please choose again.");
@@ -103,18 +125,28 @@ public class CreateCombinationState implements GameState {
 		}
 	
 		combination = new CardCombination(tempHand);
+		return true;
 	
 	}
 	
-	public void setSizeOfCombination(){
+	public boolean setSizeOfCombination(){
 		while (!isValidSize()){
 			System.out.println("How many cards will you combination have? (1, 2, 3 or 5)");
+			System.out.println("(press any letter to go back to actions)");
 			Scanner scanner = new Scanner(System.in);
+			while (!scanner.hasNextInt()) {
+				   System.out.println("Only numbers, please.");
+				   scanner.nextLine();
+				   return false;
+				}
 			sizeOfComb = scanner.nextInt();
 			if (!isValidSize()){
 				System.out.println("Amount not valid. Please choose again.");
 			}
+			else
+				return true;
 		}
+		return false;
 	}
 	
 	public boolean confirmCombination(){
