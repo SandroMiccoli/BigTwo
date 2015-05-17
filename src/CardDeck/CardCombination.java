@@ -191,8 +191,13 @@ public class CardCombination {
 		int freqFirst = Collections.frequency(ranks, ranks.get(0));
 		int freqLast = Collections.frequency(ranks, ranks.get(4));
 		
-		if ( (freqFirst==3 && freqLast==2) || (freqFirst==2 && freqLast==3) )
+		if ( (freqFirst==3 && freqLast==2) || (freqFirst==2 && freqLast==3) ){
 			isFull = true;
+			if (freqFirst==3)
+				this.highestCard = combination.get(0);
+			else
+				this.highestCard = combination.get(4);
+		}
 		else
 			isFull = false;	
 		
@@ -213,8 +218,13 @@ public class CardCombination {
 		int freqFirst = Collections.frequency(ranks, ranks.get(0));
 		int freqLast = Collections.frequency(ranks, ranks.get(4));
 		
-		if ( (freqFirst==4 && freqLast==1) || (freqFirst==1 && freqLast==4) )
+		if ( (freqFirst==4 && freqLast==1) || (freqFirst==1 && freqLast==4) ){
 			isFour = true;
+			if (freqFirst==4)
+				this.highestCard = combination.get(0);
+			else
+				this.highestCard = combination.get(4);
+		}
 		else
 			isFour = false;	
 		
