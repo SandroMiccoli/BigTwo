@@ -11,7 +11,7 @@ public class NextPlayerState implements GameState {
 			game.setNextPlayer();
 			if (game.getCurrentPlayer()==game.getOwnerOfLastCombination())
 				game.resetRound();
-			game.setState(new waitCombinationState());
+			game.setState(new WaitCombinationState());
 		}
 		else
 			game.setState(new EndOfGameState());

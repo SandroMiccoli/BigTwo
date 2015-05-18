@@ -240,7 +240,7 @@ public class CardCombination {
 		
 	}	
 	
-	public boolean checkFirsCombination(){
+	public boolean checkFirstCombination(){
 		return checkCombination() && checkThreeOfDiamonds();
 	}
 	

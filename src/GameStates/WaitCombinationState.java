@@ -1,7 +1,7 @@
 package GameStates;
 import Game.BigTwo;
 
-public class waitCombinationState implements GameState {
+public class WaitCombinationState implements GameState {
 
 	@Override
 	public void doAction(BigTwo game) {

@@ -176,7 +176,7 @@ public class CreateCombinationState implements GameState {
 	
 	public void checkCombination(BigTwo game){
 		if (game.isFirstRound()&&game.getGameTurn()==0){
-			if (!combination.checkFirsCombination()){
+			if (!combination.checkFirstCombination()){
 				System.out.println("Combination not valid, please try again.");
 				clearVariables();
 			}
