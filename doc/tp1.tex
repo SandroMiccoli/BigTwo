@@ -65,7 +65,7 @@ O planejamento que antecedeu à implementação ocorreu da seguinte forma: estud
 \section{Regras}
 \label{regras}
 
-O Pôquer Chinês é um jogo de cartas cujo objetivo é ser o primeiro a desfazer de todas as suas cartas. É por vezes chamada de pôquer chinês devido à sua origem chinesa e uso de mãos de pôquer, embora seja um jogo de natureza completamente diferente.
+O Pôquer Chinês \cite{bigtwo} é um jogo de cartas cujo objetivo é ser o primeiro a desfazer de todas as suas cartas. É por vezes chamada de pôquer chinês devido à sua origem chinesa e uso de mãos de pôquer, embora seja um jogo de natureza completamente diferente.
 Ele é jogado tanto casualmente como por dinheiro. É geralmente jogado com dois a quatro jogadores, com o baralho inteiro sendo distribuído para todos os jogadores, ou 13 cartas para cada jogador.
 Após as cartas terem sido distribuídas, no geral, o jogador com a menor carta, o 3 de ouros, joga primeiro, com o jogo prosseguindo em uma direção horária. Cartas podem ser colocadas na mesa como únicas, duplas, trios ou em grupo de cinco, utilizando as regras do pôquer, inclusive na primeira jogada feita por quem tem o 3 de ouros.
 Depois do início do jogo dado pela jogada do primeiro jogador, o jogador a seguir precisa colocar um mesmo número de cartas que sejam maiores do que aqueles colocados pelo jogador anterior. Caso um jogador não possa ou não queira colocar uma carta ou combinação, ele passa seu turno. Caso todos os oponentes decidam passar, então o jogador remanescente possui o direito de colocar qualquer combinação permitida. O naipe das cartas é utilizado como critério de desempate, sendo a ordem do menor para o maior: ouros, paus, copas e espadas.
@@ -129,21 +129,14 @@ Após gerar o diagrama UML que indicava quais classes precisariam ser implementa
 	\label{uml}
 \end{figure}
 
+\vspace{0.8 true cm}
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.8\textwidth]{activity.png}
 	\caption{Diagrama de atividades}
 	\label{activity}
 \end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=.8\textwidth]{umlfull.png}
-	\caption{Diagrama de classes completo}
-	\label{umlfull}
-\end{figure}
-
-Em resumo, as seguintes classes e subclasses foram criadas:
 
 \section{Classes implementadas}
 \label{classesimplementadas}
@@ -643,9 +636,16 @@ Selection your action...
 
 O trabalho prático foi prazeroso de ser realizado. Os conceitos de modelagem de classe aprendidos em sala foram bastante reforçados quando nos deparamos com um problema complexo como este.
 
-Foi necessário lidar com o desafio de não ter uma especificação detalhada, o que traz uma série de dificuldades e decições complicadas de serem tomadas. Apesar disso, foi muito interessante e acreditamos que a escolha de um jogo como tema livre proporcionou uma motivação a mais para os alunos do que se fosse um assunto menos divertido \cite{forum}. 
+Foi necessário lidar com o desafio de não ter uma especificação detalhada, o que traz uma série de dificuldades e decições complicadas de serem tomadas. Apesar disso, foi muito interessante e acreditamos que a escolha de um jogo como tema livre proporcionou uma motivação a mais para os alunos do que se fosse um assunto menos divertido. 
 
 \bibliographystyle{sbc}
 \bibliography{tp1}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.8\textwidth]{umlfull.png}
+	\caption{Diagrama de classes completo}
+	\label{umlfull}
+\end{figure}
 
 \end{document}
